@@ -1,63 +1,80 @@
 # Trae Agent Rules (Learning Edition)
 
-这是一个关于 Trae IDE 智能体规则配置的学习项目。
+这是一个关于 Trae IDE 智能体规则配置的学习项目，旨在通过标准化、结构化的规则定义，提升 AI 辅助编程的效率与准确性。
 
 ## ⚠️ 声明 (Disclaimer)
 
-本项目是我 ([@Cooper-X-Oak](https://github.com/Cooper-X-Oak/)) 的学习之作，旨在深入理解和实践 AI 辅助编程中的规则定义与上下文管理。
-
-**致谢原作者**：本项目的内容和结构深受开源社区 Agent Rules 相关项目的启发（源自 `agent-rules`）。我在此基础上进行了重构、汉化和定制，以更好地适应 Trae IDE 的工作流。本项目充分尊重原作者的创意与贡献，如有侵权请联系删除。
+本项目是我 ([@Cooper-X-Oak](https://github.com/Cooper-X-Oak/)) 的学习之作。内容深受开源社区 Agent Rules 相关项目的启发，在此基础上进行了重构、汉化和定制，以适应 Trae IDE 的工作流。
 
 ## ✨ 项目亮点 (Highlights)
 
-本项目对 Agent Rules 进行了深度的标准化和结构化改造，主要亮点如下：
+本项目对 Agent Rules 进行了深度的标准化和结构化改造：
 
 1.  **极致精简的规则格式**
-    *   **Token 最大化利用**：摒弃冗长的自然语言描述，采用 `Key:Value` 键值对格式。
-    *   **强指令约束**：移除 Markdown 装饰、表情和冗余标点，使用 `MUST`, `NEVER`, `REQUIRED` 等关键词，降低 AI 理解歧义。
+    *   **Token 最大化利用**：采用 `Key:Value` 键值对格式，摒弃冗长描述。
+    *   **强指令约束**：使用 `MUST`, `NEVER`, `REQUIRED` 等关键词，降低歧义。
 
 2.  **智能生效模式 (Smart Triggering)**
-    *   引入 YAML Frontmatter (`--- ... ---`) 头部定义。
-    *   支持三种互斥的生效模式，实现精准的上下文控制：
-        *   `alwaysApply: true`: 全局生效（如核心规则定义）。
-        *   `globs: "*.swift"`: 基于文件路径自动匹配生效。
-        *   `description: "..."`: 基于语义场景智能触发（如“当用户需要修复Bug时”）。
+    *   **`alwaysApply: true`**: 全局生效（如中文交互规范）。
+    *   **`globs: "*.md"`**: 基于文件路径自动匹配。
+    *   **`description: "..."`**: 基于语义场景智能触发。
 
-3.  **结构化工作流 (Structured Workflows)**
-    *   将复杂的工程任务拆解为标准化的 `STEPS`（步骤链）。
-    *   明确定义 `ROLE`（角色）和 `TASK`（任务边界），让 AI 扮演特定专家角色。
-
-4.  **完全本地化 (Localization)**
-    *   规则文件名与 `ROLE` 保持一致，且采用中文命名，直观易懂。
-    *   内容针对中文语境进行了优化，符合中文开发者习惯。
+3.  **标准化分类命名 (Standardized Categories)**
+    *   所有规则文件采用 `Category-功能名称.md` 格式，分类清晰（Core/Docs/Tech/Tools）。
 
 ## 📂 目录结构
 
-*   **`TRAERULES/`**: 核心规则库。
-    *   `RULEOFRULES.md`: **[核心元规则]** 定义了所有规则必须遵循的宪法级标准。
-    *   `Core-Workflows/`: 核心工作流（如代码审查、Bug修复）。
-    *   `Tech-Stack/`: 技术栈特定规则（如 Swift, 浏览器自动化）。
-    *   `Tools-Automation/`: 工具与自动化规则（如 Git 提交、MCP 配置）。
-    *   `Docs-Knowledge/`: 文档与知识管理规则。
+所有规则文件均位于 `TRAERULES/` 目录下，扁平化管理：
 
-## 🚀 如何使用
+*   **`RULEOFRULES.md`**: **[核心元规则]** 定义了所有规则必须遵循的宪法级标准。
+*   **Core (核心类)**
+    *   `Core-中文交互规范.md`: 全局语言约束，确保中文回复。
+    *   `Core-Bug修复专家.md`: 标准化 Bug 修复流程。
+    *   `Core-技术实现架构师.md`: 代码实现与架构设计。
+    *   ... (全视角审查、根因分析等)
+*   **Docs (文档类)**
+    *   `Docs-Readme管理员.md`: 维护项目入口文档。
+    *   `Docs-技术文档工程师.md`: 编写技术文档。
+    *   ... (版本日志、上下文引导等)
+*   **Tech (技术栈类)**
+    *   `Tech-现代Swift专家.md`: Swift 开发规范。
+    *   `Tech-浏览器自动化工程师.md`: 浏览器自动化开发。
+*   **Tools (工具类)**
+    *   `Tools-Github项目管家.md`: Github 项目管理。
+    *   `Tools-GitCommit专家.md`: 规范化 Git 提交。
+    *   ... (MCP配置、系统可视化等)
 
-本仓库只包含整理好的规则文件，**不包含** Trae 的项目配置或原始素材。请按照以下步骤手动集成：
+## 🚀 如何使用 (Usage)
 
-1.  **获取规则**：将本仓库克隆到本地，或直接下载你需要的规则文件。
-2.  **集成到项目**：
-    *   在你的 Trae 项目根目录下，找到或创建 `.trae/rules/` 文件夹。
-    *   将 `TRAERULES` 文件夹中的**所有** `.md` 文件（包括子文件夹中的内容）复制到你的 `.trae/rules/` 目录下。
-    *   **关键步骤**：确保 `RULEOFRULES.md` 也被复制进去。
-3.  **开始使用**：Trae 会自动识别这些规则，并在相应场景下智能触发。
+本仓库只包含整理好的规则文件，**不包含** Trae 的项目配置或原始素材。
 
-### 🚨 关于 RULEOFRULES.md 的重要说明
+### 1. 获取规则
+```bash
+git clone https://github.com/Cooper-X-Oak/trae-agent-rules-CN.git
+```
 
-**`RULEOFRULES.md` 是本规则体系的基石与宪法。**
+### 2. 集成到项目
+1.  在你的 Trae 项目根目录下，创建 `.trae/rules/` 文件夹。
+2.  将 `TRAERULES` 文件夹中的所有 `.md` 文件复制到 `.trae/rules/` 目录下。
+3.  **重要**：确保 `RULEOFRULES.md` 和 `Core-中文交互规范.md` 被包含在内，以保证基础体验。
 
-*   **定义标准**：它定义了所有规则文件的编写格式（Key:Value）、长度限制、强指令使用规范等。
-*   **确保一致性**：没有它，AI 可能无法正确理解其他规则的精简格式，导致规则失效或执行偏差。
-*   **必须存在**：无论你选择复制哪些具体的功能规则，**请务必始终保留 `RULEOFRULES.md`**，以维持 AI 对规则体系的正确认知。
+### 3. 验证生效
+在 Trae 中打开任意文件或进行对话，AI 将根据当前的上下文（文件类型或你的问题）自动加载相应的规则。
+
+## 🤝 贡献 (Contributing)
+
+欢迎提交 Issue 或 Pull Request 来改进规则库！
+
+1.  Fork 本仓库。
+2.  创建特性分支 (`git checkout -b feature/AmazingRule`)。
+3.  按照 `RULEOFRULES.md` 的标准编写新规则。
+4.  提交更改 (`git commit -m 'feat: Add AmazingRule'`)。
+5.  推送到分支 (`git push origin feature/AmazingRule`)。
+6.  提交 Pull Request。
+
+## 📄 许可证 (License)
+
+[MIT License](LICENSE)
 
 ---
 *Created with ❤️ by Cooper-X-Oak using Trae IDE*
