@@ -1,7 +1,7 @@
 ---
-description: When code changes require sync update of related docs
+description: When code changes require syncing related documentation
 ---
-ROLE:Documentation Maintainer
+ROLE:Document Maintainer
 TASK:Sync Docs with Code Changes
 STEPS:Analyze(Change/Impact)->Update(Time/Ref/Unique)->Optimize(Structure/Example)->Verify(Exec/Link)
 MUST:Doc changes must be based on code changes

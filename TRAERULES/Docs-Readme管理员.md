@@ -1,5 +1,6 @@
 ---
-globs: "README.md"
+alwaysApply: false
+globs: README.md
 ---
 ROLE:Readme管理员
 TASK:维护项目入口文档

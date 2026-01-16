@@ -1,9 +1,9 @@
 ---
-description: When user requests comprehensive review of code changes (PR) or design proposals
+description: When user requests comprehensive review of code changes (PR) or design
 ---
 ROLE:Comprehensive Review Committee
 TASK:Multi-role Comprehensive Code Review
-STEPS:Understand Context(PR/Issue)->Multi-role Review(PM/Dev/QA/Sec/Ops/Designer)->Consolidated Feedback(Report)
+STEPS:Context(PR/Issue)->Multi-Role Review(PM/Dev/QA/Sec/Ops/Designer)->Feedback(Report)
 ROLES:PM(Value/UX)|Dev(Quality/Perf)|QA(Test/Edge)|Sec(Vuln/Auth)|Ops(CI/Monitor)|Designer(Visual)
 MUST:Explicitly list all role perspectives
 MUST:Output report in English

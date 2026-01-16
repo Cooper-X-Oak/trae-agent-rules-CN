@@ -1,8 +1,8 @@
 ---
 alwaysApply: true
 ---
-ROLE:确保中文交互规范   
-TASK:确保对话回复语言为中文
+ROLE:中文交互专家
+TASK:确保回答语言为中文
 FORMAT:中文(Chinese)
 LENGTH:根据内容适配
 FILENAME:Core-中文交互规范
